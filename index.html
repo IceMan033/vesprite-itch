@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VeSprite (itch page preview)</title>
+<style>
+body{margin:0;background:#131313;color:#ececf0;font:16px/1.6 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:960px;margin:0 auto;padding:24px;background:#1e1e24}
+img{display:block;max-width:100%;height:auto;margin:16px 0;image-rendering:pixelated}
+h2{color:#ebdc78;margin:32px 0 8px}
+a{color:#ebdc78}
+hr{border:0;border-top:1px solid #3a3a46;margin:32px 0}
+code{background:#131313;padding:1px 5px;border-radius:3px}
+</style>
+</head>
+<body>
+<main>
+<!-- VeSprite - itch.io page body (build 0.2.0). Paste into the description
+     box with the editor in HTML mode. itch keeps p, h2/h3, ul, ol, strong,
+     em, code, a, hr and img; it drops style and script, so the look comes
+     from your page theme (#131313). The GIFs (marketing/features/, 900 x 630,
+     recorded from the 0.2 window) are served from GitHub Pages:
+     powershell -File marketing/itch/publish.ps1 uploads them again. -->
+
+<p><strong>VeSprite is an extension for Aseprite.</strong> Changing a curve in pixel art means erasing it and drawing it again. Here you move an anchor and the pixels follow. You draw with bezier tools and get pixels back: on the grid, aliased, with one-pixel outlines walked the way you would walk them by hand. It started as one node of Spaghetti, the one where you draw vector shapes, and it kept asking to be a program.</p>
+
+<hr>
+
+<h2>Pen tool</h2>
+
+<img src="gifs/01-pen-tool.gif" alt="The Pen tool placing two corners, dragging out a curved anchor and clicking the first anchor to close the shape, which fills with pixels">
+
+<p>Click to place corners, drag to pull out a curve, click the first anchor to close. Hold Alt while dragging to break the two handles apart. Esc closes the contour too and goes back to Select. Every click snaps to the pixel grid, so the edges land on whole pixels.</p>
+
+<h2>Rect and Ellipse</h2>
+
+<img src="gifs/02-shapes.gif" alt="Dragging a rectangle and an ellipse on the canvas, then going through the Snap list on the View tab: Half, Anchors, None and Grid">
+
+<p>Drag a box, and hold Shift for a square or a circle. The shape comes out with its anchors selected, ready to move.</p>
+
+<ul>
+<li>Snap decides where the corners may land: Grid (pixel corners, the default), Half (centres too, what a one-pixel line wants), Anchors or None. It lives on the View tab, and S jumps to the next one.</li>
+</ul>
+
+<h2>Select and move</h2>
+
+<img src="gifs/03-select-move.gif" alt="Dragging one anchor, then the whole shape by its outline, adding anchors to the selection with Ctrl+click, nudging them with the arrow keys, box selecting, deleting and undoing">
+
+<p>Drag an anchor to move it, drag the outline to move the whole shape. The status line says what a drag will do before you press, which saves a lot of Ctrl+Z.</p>
+
+<ul>
+<li>Ctrl+click or Shift+click add to the selection. Drag on empty canvas for a box.</li>
+<li>Arrow keys move the selection one image pixel, ten with Shift. Delete removes it.</li>
+<li>Undo is VeSprite's own, one step per gesture: Ctrl+Z, or the Undo button under the panel.</li>
+</ul>
+
+<h2>Anchor types</h2>
+
+<img src="gifs/04-anchor-types.gif" alt="Turning a corner of a diamond into a smooth anchor from the Anchor list, pulling a handle, switching to Symmetric and double clicking the outline to insert a new anchor">
+
+<p>Corner, Smooth or Symmetric from one list on the View tab. Smooth invents handles from the neighbours, Symmetric mirrors them, Corner drops them. C switches between corner and smooth without leaving the canvas.</p>
+
+<ul>
+<li>Double click any segment to insert an anchor right there, without moving the curve.</li>
+<li>Right click an anchor to remove it.</li>
+<li>Handles show for the selected anchor and its two neighbours only, so a busy shape stays readable.</li>
+</ul>
+
+<h2>Layers</h2>
+
+<img src="gifs/05-layers.gif" alt="The Layers tab: adding a layer, drawing an ellipse on it, colouring it from the foreground colour, hiding it with the eye, moving it down and up and duplicating it">
+
+<p>Every layer has its own shape, fill, stroke, blend mode and opacity. Only the active one is editable. The others show their pixels and a faint outline to line things up.</p>
+
+<ul>
+<li>An eye on every row, plus Add layer, Duplicate, Delete, Move up and Move down.</li>
+<li>Double click a row to rename it in place.</li>
+</ul>
+
+<h2>Fill and stroke</h2>
+
+<img src="gifs/06-fill-stroke.gif" alt="The Style tab: taking the fill from the foreground colour, turning the stroke on, taking its colour from the background, dragging the Width slider, switching the edge between Aliased and Antialiased and swapping the two colours">
+
+<p>A stroke of width 1 with the Aliased edge is a Bresenham walk with the elbows cleaned, the line you would draw by hand. Wider than that, the outline is expanded to a filled contour with Butt, Square or Round caps and Miter, Round or Bevel joins.</p>
+
+<ul>
+<li>Colours open a picker inside the window: RGBA sliders, a hex field and the palette of your sprite as swatches.</li>
+<li>Use foreground and Use background take Aseprite's current colours. Swap colors exchanges fill and stroke.</li>
+<li>Edge switches Aliased and Antialiased for the whole layer.</li>
+</ul>
+
+<h2>Gradients that become pixel art</h2>
+
+<img src="gifs/07-gradients.gif" alt="Switching the fill to Gradient, dragging its handle on the canvas, trying Bayer 8x8, Bayer 16x16 and Blue Noise dither, raising the steps, adding a stop on the ramp, colouring it and changing the gradient to Radial">
+
+<p>Linear, radial, angular, diamond or reflected. Set the fill's Type to Gradient and two handles appear on the canvas. Drag them.</p>
+
+<ul>
+<li>Steps is how many bands the ramp is cut into. Dither is how the band edges break up: Bayer 2x2 to 16x16, blue noise, clustered, lines, or none.</li>
+<li>Colors: Stops paints with the stop colours only, so a gradient can be locked to your palette.</li>
+<li>Click the ramp to add a stop, drag a stop to move it, double click it to change its colour.</li>
+<li>The stroke gets a gradient of its own the same way.</li>
+<li>The ramp in the panel shows the bands and the colours, not the dither pattern. That one you see on the canvas.</li>
+</ul>
+
+<h2>Blend modes and opacity</h2>
+
+<img src="gifs/08-blend-opacity.gif" alt="A blue ellipse on a second layer over a red rectangle, going through Multiply, Screen, Overlay and Add, then lowering its opacity with the slider">
+
+<p>Nine blend modes and an opacity slider per layer: Normal, Multiply, Screen, Overlay, Add, Subtract, Darken, Lighten and Difference. The blend applies where the layer overlaps the ones below. Over nothing it shows as itself.</p>
+
+<h2>Close shapes, zoom and pan</h2>
+
+<img src="gifs/09-auto-close-pan-zoom.gif" alt="Turning Close shapes on, placing Pen anchors that fill from the third one, zooming with the wheel, panning with the middle button and pressing Fit view">
+
+<p>With Close shapes on, a Pen contour closes itself as soon as it has three anchors and keeps accepting more. A Pencil stroke closes when it ends.</p>
+
+<ul>
+<li>The wheel zooms about the cursor. The middle button pans from any tool, and so do the Pan tool and Space.</li>
+<li>0 or F fits the canvas. 1, 2 and 3 zoom to 100, 200 and 300 %.</li>
+<li>The pixel grid shows from 4x. G hides it.</li>
+</ul>
+
+<h2>SVG and your sprite</h2>
+
+<ul>
+<li>SVG in: paths, shapes, transforms and arcs. The whole file lands on one new layer.</li>
+<li>SVG out: one path per layer with colours, strokes, opacity, blend and gradients.</li>
+<li>Apply to sprite writes the drawing as a new layer, into the active cel or as a new sprite. Indexed and grayscale sprites get the nearest palette colours.</li>
+<li>Show your sprite behind the drawing as a reference.</li>
+<li>Its own <code>.vesprite</code> file, and the drawing survives closing the window and closing Aseprite.</li>
+</ul>
+
+<hr>
+
+<h2>Details</h2>
+
+<ul>
+<li>One window inside Aseprite, nothing added to its menus. Tabs and panel on the left, tools and canvas on the right, and a divider you can drag.</li>
+<li>Press <code>?</code> for the shortcut list.</li>
+<li>Eight tools: Select, Pen, Pencil, Rect, Ellipse, Knife, Width and Pan.</li>
+<li>Aseprite 1.3 or newer.</li>
+</ul>
+
+<h2>Install</h2>
+
+<ol>
+<li>Download <code>VeSprite-0.2.0.aseprite-extension</code>.</li>
+<li>Double-click it, or in Aseprite: Edit &gt; Preferences &gt; Extensions &gt; Add Extension.</li>
+<li>Open it from File &gt; Scripts &gt; VeSprite.</li>
+</ol>
+
+<h2>License</h2>
+
+<p>One purchase is for one person, on every computer they use.</p>
+
+<ul>
+<li>Use it in any project: personal, commercial, client work, games and assets you sell.</li>
+<li>What you draw and export with it is yours. No attribution required.</li>
+<li>Every update in the 0.x and 1.x lines is included.</li>
+<li>You can read and modify the Lua source for your own use.</li>
+<li>Do not share, resell or redistribute the extension. A studio buys one per artist.</li>
+</ul>
+
+<hr>
+
+<p>Something missing, or something that should work differently? Tell me in the comments.</p>
+
+<h2>More Aseprite extensions</h2>
+
+<ul>
+<li><a href="https://icemaan.itch.io/bonebase">Bonebase</a>: rig, skin and animate pixel art character bases.</li>
+<li><a href="https://icemaan.itch.io/fastfx-full-particle-system-for-aseprite">FastFX Full</a>: multi-emitter particle FX, live preview and bake.</li>
+<li><a href="https://icemaan.itch.io/spaghetti-node-based-textures-for-aseprite">Spaghetti</a>: node-based textures for Aseprite.</li>
+<li><a href="https://icemaan.itch.io/ghostframe-aseprite-extension">GhostFrames</a>: RIFE frame interpolation for inbetweens.</li>
+</ul>
+
+</main>
+</body>
+</html>

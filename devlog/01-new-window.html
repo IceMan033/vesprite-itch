@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VeSprite devlog (preview)</title>
+<style>
+body{margin:0;background:#131313;color:#ececf0;font:16px/1.6 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:960px;margin:0 auto;padding:24px;background:#1e1e24}
+img{display:block;max-width:100%;height:auto;margin:16px 0;image-rendering:pixelated}
+h2{color:#ebdc78;margin:32px 0 8px}
+a{color:#ebdc78}
+hr{border:0;border-top:1px solid #3a3a46;margin:32px 0}
+code{background:#131313;padding:1px 5px;border-radius:3px}
+</style>
+</head>
+<body>
+<main>
+<!-- VeSprite devlog 01 (build 0.2.0). Suggested title: "VeSprite 0.2: a new
+     window". Paste into the devlog editor in HTML mode. The GIFs are served
+     from GitHub Pages (marketing/itch/publish.ps1). -->
+
+<p><strong>VeSprite 0.2 is out.</strong> Nothing new to draw with this time. The tools, the rasterizer and the SVG code are the ones from 0.1. What changed is everything you click on to reach them, because the old window was the part I liked least.</p>
+
+<p>Short version for anyone new: you draw with bezier tools inside Aseprite and get pixels back, on the grid, aliased, with one-pixel outlines walked the way you would walk them by hand.</p>
+
+<hr>
+
+<h2>Why a new window</h2>
+
+<p>In 0.1 I drew the panel by hand, and you could tell. Blend, snap, dither and edge were buttons that jumped to the next value on every click, so getting from Normal to Add was four clicks and a bit of faith. Opacity moved in steps of ten. Colour, layer name and canvas size each opened a little window of their own. And the shortcuts were written on the buttons, which is why the window had to open so wide.</p>
+
+<p>The new one is the window Bonebase already had, with VeSprite inside it.</p>
+
+<h2>Tabs and panel</h2>
+
+<img src="../gifs/05-layers.gif" alt="The new VeSprite window: tabs and the Layers panel on the left, the tool bar and the canvas on the right, while a layer is added, coloured, hidden, moved and duplicated">
+
+<p>Everything that was spread around the canvas now sits in five tabs on the left: Layers, Style, View, File and More. The sections inside a tab fold, so you can put away the half you're not using.</p>
+
+<ul>
+<li>Save, Apply to sprite, Undo and Redo stay under the panel on every tab.</li>
+<li>The divider between the panel and the canvas drags. It remembers where you left it, and so does the open tab.</li>
+<li>The tools are a bar over the canvas, and the status line under it still says what a drag is about to do.</li>
+</ul>
+
+<h2>Lists and sliders</h2>
+
+<img src="../gifs/06-fill-stroke.gif" alt="The Style tab: fill and stroke colours, the Width slider being dragged and the Edge list switching between Aliased and Antialiased">
+
+<p>Anything that used to cycle is a list now: click it, pick the value, done. Width, opacity, steps and stop position are sliders, and if you want an exact number you click the number and type it.</p>
+
+<p>Undo follows the same rule as on the canvas: one drag of a slider, or of the colour picker, is one step.</p>
+
+<h2>Colour picker</h2>
+
+<p>The colour box opens a picker inside the window, with RGBA sliders, a hex field and the palette of the sprite you have open as swatches. Use foreground and Use background still take Aseprite's current colours when that's quicker.</p>
+
+<h2>Layers</h2>
+
+<p>The layer list has an eye on every row, so hiding a layer that isn't the active one is a single click. Double click a row and you rename it right there. Blend and opacity live under the list.</p>
+
+<h2>Gradients</h2>
+
+<img src="../gifs/07-gradients.gif" alt="The fill switched to Gradient on the Style tab, its handle dragged on the canvas, three dither kinds picked from the list, more steps, a new stop on the ramp and the shape changed to Radial">
+
+<p>The ramp is in the Style tab. Click it to add a stop, drag a stop to move it, double click it to change its colour. Shape, Colors, Steps and Dither sit right under it.</p>
+
+<p>One thing it doesn't do: the ramp in the panel shows the bands and the colours, but not the dither pattern. That one you only see on the canvas.</p>
+
+<h2>Snap and anchor type</h2>
+
+<img src="../gifs/04-anchor-types.gif" alt="The View tab: the Anchor list turning a corner into a smooth anchor and then a symmetric one, and a double click inserting an anchor on the outline">
+
+<p>Both were buttons on the old bar, and both are lists on the View tab now, next to the pixel grid and Close shapes (the old Auto close). The keys still work: S for the next snap mode, C for corner or smooth.</p>
+
+<h2>Keys and mouse</h2>
+
+<ul>
+<li><code>?</code> or F1 opens the shortcut list. That's where the shortcuts went when they left the buttons.</li>
+<li>0 or F fits the canvas. 1, 2 and 3 zoom to 100, 200 and 300 %.</li>
+<li>The middle button pans from any tool. Space and the Pan tool do too.</li>
+<li>Right click still removes the anchor under the cursor, so it doesn't pan here like it does in Bonebase. If your hand expects it, sorry. The anchors got there first.</li>
+</ul>
+
+<h2>Fixes and smaller changes</h2>
+
+<ul>
+<li>Messages and errors go to the status line, in a warning colour when something went wrong. No more boxes to dismiss.</li>
+<li>The only Aseprite windows left are the file dialogs and the question before New throws your drawing away.</li>
+<li>Canvas size is two number fields on the View tab, and Size from sprite copies the open sprite's.</li>
+<li>A More tab lists my other extensions. It's a tab and nothing else: no popups.</li>
+<li>Your <code>.vesprite</code> files from 0.1 open as they are.</li>
+<li>Every GIF on the page is recorded again from the new window.</li>
+</ul>
+
+<hr>
+
+<p>This version was about the window, so if something took one click before and takes two now, I want to know. Same if there's a tool you keep reaching for and it isn't there. Tell me in the comments.</p>
+
+</main>
+</body>
+</html>
